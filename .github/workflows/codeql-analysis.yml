@@ -26,10 +26,11 @@ jobs:
         id: build_solutions
         shell: pwsh
         run: |
-          Get-ChildItem -Path Source/ -Filter *.sln -File -Recurse | ForEach-Object {
-            dotnet build $PSItem.FullName `
-            --configuration Release
-          }
+          # Get-ChildItem -Path Source/ -Filter *.sln -File -Recurse | ForEach-Object {
+          #   dotnet build $PSItem.FullName `
+          #   --configuration Release
+          # }
+          dotnet build .\Source\RPSLS.sln -c Release
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
