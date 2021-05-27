@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: [ 'csharp', 'javascript', 'python' ]
+        language: [ 'csharp', 'java', 'javascript', 'python' ]
     steps:
       - name: Checkout repository
         id: checkout_repo
@@ -36,7 +36,8 @@ jobs:
         name: Build Java project
         id: build_java_proj
         run: |
-          javac .\Source\Services\RPSLS.JavaPlayer.Api\src\main\java\RPSLS\JavaPlayer\Api\Application.java
+          ./mvnw package
+        working-directory: Source/Services/RPSLS.JavaPlayer.Api/src/
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
