@@ -19,18 +19,13 @@ jobs:
       - name: Initialize CodeQL
         id: init_codeql
         uses: github/codeql-action/init@v1
-        # with:
-        #   queries: security-and-quality
+        with:
+          languages: csharp
+          queries: security-and-quality
 
-      - name: Build solutions
-        id: build_solutions
-        shell: pwsh
-        run: |
-          # Get-ChildItem -Path Source/ -Filter *.sln -File -Recurse | ForEach-Object {
-          #   dotnet build $PSItem.FullName `
-          #   --configuration Release
-          # }
-          dotnet build .\Source\RPSLS.sln -c Release
+      - name: Autobuild
+        id: auto_build 
+        uses: github/codeql-action/autobuild@v1
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
