@@ -37,7 +37,7 @@ jobs:
         id: build_java_proj
         run: |
           ./mvnw package
-        working-directory: Source/Services/RPSLS.JavaPlayer.Api/src/
+        working-directory: Source/Services/RPSLS.JavaPlayer.Api/
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
