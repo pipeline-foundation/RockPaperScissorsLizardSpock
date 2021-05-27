@@ -27,9 +27,16 @@ jobs:
           category: ${{ matrix.language }}
           queries: security-and-quality
 
-      - name: Autobuild
-        id: auto_build 
+      - if: matrix.language == 'csharp'
+        name: Autobuild
+        id: auto_build
         uses: github/codeql-action/autobuild@v1
+
+      - if: matrix.language == 'java'
+        name: Build Java project
+        id: build_java_proj
+        run: |
+          javac
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
