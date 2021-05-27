@@ -36,7 +36,7 @@ jobs:
         name: Build Java project
         id: build_java_proj
         run: |
-          javac
+          javac .\Source\Services\RPSLS.JavaPlayer.Api\src\main\java\RPSLS\JavaPlayer\Api\Application.java
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
