@@ -2,7 +2,11 @@ name: CodeQL Analysis
 
 on:
   push:
+    paths:
+      - 'Source/**'
   pull_request:
+    paths:
+      - 'Source/**'
   schedule:
     - cron: '0 8 * * *'
   workflow_dispatch:
@@ -28,13 +32,13 @@ jobs:
           queries: security-and-quality
 
       - if: matrix.language == 'csharp'
-        name: Autobuild
-        id: auto_build
+        name: Build C# code
+        id: build_csharp_code
         uses: github/codeql-action/autobuild@v1
 
       - if: matrix.language == 'java'
-        name: Build Java project
-        id: build_java_proj
+        name: Build Java code
+        id: build_java_code
         run: |
           ./mvnw package
         working-directory: Source/Services/RPSLS.JavaPlayer.Api/
