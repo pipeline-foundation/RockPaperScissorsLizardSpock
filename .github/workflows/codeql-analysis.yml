@@ -23,8 +23,8 @@ jobs:
         id: init_codeql
         uses: github/codeql-action/init@v1
         with:
-          languages: ${{ martix.language }}
-          category: ${{ martix.language }}
+          languages: ${{ matrix.language }}
+          category: ${{ matrix.language }}
           queries: security-and-quality
 
       - name: Autobuild
