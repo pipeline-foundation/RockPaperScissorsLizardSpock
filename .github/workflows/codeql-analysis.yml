@@ -11,6 +11,9 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [ 'csharp', 'java', 'javascript', 'python' ]
     steps:
       - name: Checkout repository
         id: checkout_repo
@@ -20,7 +23,8 @@ jobs:
         id: init_codeql
         uses: github/codeql-action/init@v1
         with:
-          languages: csharp
+          languages: ${{ martix.language }}
+          category: ${{ martix.language }}
           queries: security-and-quality
 
       - name: Autobuild
